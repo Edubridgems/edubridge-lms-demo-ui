@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import { ArrowLeftCircleIcon } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Link href={'/'} className="fixed hover:bottom-6 z-50 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-500 ease-linear right-5 bottom-5 bg-teal-800 rounded-full h-14 w-14">
+          <ArrowLeftCircleIcon className="text-white" />
+        </Link>
       </body>
     </html>
   );

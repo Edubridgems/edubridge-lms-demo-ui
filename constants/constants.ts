@@ -64,30 +64,30 @@ export const Transcripts:Transcript[] =[
 
 
 export const LearningMaterials: LearningMaterial[] = [
-  {
-    id:'1',
-    name: 'Introduction to operating system',
-    type: 'pptx',
-    size: '3mb',
-    courseid: '12',
-    courseName: 'Operating systems'
-  },
-    {
-    id:'1',
-    name: 'Diving deep into the kernel',
-    type: 'video',
-    size: '3mb',
-    courseid: '12',
-    courseName: 'Operating systems'
-  },
-    {
-    id:'1',
-    name: 'Elements of an operating system',
-    type: 'pdf',
-    size: '3mb',
-    courseid: '12',
-    courseName: 'Operating systems'
-  }
+  // {
+  //   id:'1',
+  //   name: 'Introduction to operating system',
+  //   type: 'pptx',
+  //   size: '3mb',
+  //   courseid: '12',
+  //   courseName: 'Operating systems'
+  // },
+  //   {
+  //   id:'1',
+  //   name: 'Diving deep into the kernel',
+  //   type: 'video',
+  //   size: '3mb',
+  //   courseid: '12',
+  //   courseName: 'Operating systems'
+  // },
+  //   {
+  //   id:'1',
+  //   name: 'Elements of an operating system',
+  //   type: 'pdf',
+  //   size: '3mb',
+  //   courseid: '12',
+  //   courseName: 'Operating systems'
+  // }
 ]
 
 export const assessments = [
