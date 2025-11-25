@@ -127,12 +127,7 @@ const Dropdowns = () => {
           className="w-64 bg-white/95 backdrop-blur-md border border-gray-200/60 shadow-xl"
         >
           <DropdownMenuLabel className="flex items-center gap-3 p-4">
-            <Avatar className="h-12 w-12 ring-2 ring-blue-100 ring-offset-2">
-              <AvatarImage src="/placeholder.svg" alt="Student" />
-              <AvatarFallback className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-semibold">
-                AJ
-              </AvatarFallback>
-            </Avatar>
+
             <div className="flex flex-col">
               <span className="font-semibold text-gray-900">Alaric Johnson</span>
               <span className="text-sm text-gray-600">alaric.johnson@university.edu</span>

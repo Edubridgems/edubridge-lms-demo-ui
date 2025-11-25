@@ -129,7 +129,7 @@ const Home = () => {
             </form>
 
             {/* Demo Credentials */}
-            <div className="mt-6 p-4 bg-white/10 rounded-lg border border-white/20">
+            {/* <div className="mt-6 p-4 bg-white/10 rounded-lg border border-white/20">
               <h3 className="text-white font-semibold mb-3 flex items-center gap-2">
                 <Shield className="w-4 h-4" />
                 Demo Credentials
@@ -151,7 +151,7 @@ const Home = () => {
                   <span>student@edubridge.edu / student123</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
 

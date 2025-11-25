@@ -15,19 +15,11 @@ export interface PlatformStats {
 
 export interface SystemActivity {
   id: string
-  type:
-    | "assessment_created"
-    | "user_registered"
-    | "ai_flagged"
-    | "lecturer_assigned"
-    | "system_alert"
-    | "course_updated"
-    | "plagiarism_detected"
-    | "maintenance_scheduled"
+  type: 'assessment_created' | 'user_registered' | 'ai_flagged' | 'lecturer_assigned' | 'system_alert' | 'course_updated' | 'plagiarism_detected' | 'maintenance_scheduled'
   title: string
   description: string
   timestamp: Date
-  severity: "info" | "success" | "warning" | "error" | "critical"
+  severity: 'info' | 'success' | 'warning' | 'error' | 'critical'
   unitCode?: string
   userName?: string
   metadata?: Record<string, any>
@@ -37,7 +29,7 @@ export interface RoleDistribution {
   role: string
   count: number
   percentage: number
-  trend: "up" | "down" | "stable"
+  trend: 'up' | 'down' | 'stable'
   changePercent: number
 }
 
@@ -64,37 +56,31 @@ export interface FlaggedReport {
   assessmentTitle: string
   unitCode: string
   flaggedCount: number
-  severity: "low" | "medium" | "high" | "critical"
+  severity: 'low' | 'medium' | 'high' | 'critical'
   lastUpdated: Date
   similarityScore: number
-  status: "pending" | "reviewing" | "resolved" | "escalated"
+  status: 'pending' | 'reviewing' | 'resolved' | 'escalated'
 }
 
 export interface RecentChange {
   id: string
-  type:
-    | "course_created"
-    | "lecturer_assigned"
-    | "curriculum_updated"
-    | "system_update"
-    | "user_added"
-    | "assessment_modified"
+  type: 'course_created' | 'lecturer_assigned' | 'curriculum_updated' | 'system_update' | 'user_added' | 'assessment_modified'
   title: string
   description: string
   changedBy: string
   timestamp: Date
   entityName: string
   entityCode: string
-  status: "completed" | "pending" | "failed"
-  impact: "low" | "medium" | "high"
+  status: 'completed' | 'pending' | 'failed'
+  impact: 'low' | 'medium' | 'high'
 }
 
 export interface SystemNotification {
   id: string
-  type: "overdue_grading" | "locked_users" | "ai_flagged" | "system_maintenance" | "storage_warning" | "security_alert"
+  type: 'overdue_grading' | 'locked_users' | 'ai_flagged' | 'system_maintenance' | 'storage_warning' | 'security_alert'
   title: string
   message: string
-  severity: "info" | "warning" | "critical" | "success"
+  severity: 'info' | 'warning' | 'critical' | 'success'
   count?: number
   timestamp: Date
   isRead: boolean
@@ -116,6 +102,6 @@ export interface SystemHealthMetric {
   name: string
   value: number
   unit: string
-  status: "healthy" | "warning" | "critical"
-  trend: "up" | "down" | "stable"
+  status: 'healthy' | 'warning' | 'critical'
+  trend: 'up' | 'down' | 'stable'
 }

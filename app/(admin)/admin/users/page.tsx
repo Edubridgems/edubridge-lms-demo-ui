@@ -20,7 +20,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
-import { Plus, Search, Upload, Download, MoreHorizontal, Edit, Trash2 } from "lucide-react"
+import { Plus, Search, Upload, Download, MoreHorizontal, Edit, Trash2, Users } from "lucide-react"
 import { dummyUsers } from "@/lib/dummy-data"
 import { Role, type User } from "@/types"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -255,55 +255,83 @@ export default function ManageUsers() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredUsers.map((user) => (
-                <TableRow key={user.id}>
-                  <TableCell className="flex items-center space-x-3">
-                    <Avatar>
-                      <AvatarImage src={user.avatar || "/placeholder.svg"} />
-                      <AvatarFallback>
-                        {user.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="font-medium">{user.name}</div>
-                      <div className="text-sm text-muted-foreground">{user.email}</div>
+              {filteredUsers.length > 0 ? (
+                filteredUsers.map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell className="flex items-center space-x-3">
+                      <Avatar>
+                        <AvatarImage src={user.avatar || "/placeholder.svg"} />
+                        <AvatarFallback>
+                          {user.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <div className="font-medium">{user.name}</div>
+                        <div className="text-sm text-muted-foreground">{user.email}</div>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge className={getRoleBadgeColor(user.role)}>{user.role}</Badge>
+                    </TableCell>
+                    <TableCell>{user.department}</TableCell>
+                    <TableCell className="font-mono text-sm">{user.employeeId || user.studentId}</TableCell>
+                    <TableCell>
+                      <Badge variant={user.isActive ? "default" : "secondary"}>
+                        {user.isActive ? "Active" : "Inactive"}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>{user.lastLogin ? new Date(user.lastLogin).toLocaleDateString() : "Never"}</TableCell>
+                    <TableCell className="text-right">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="h-8 w-8 p-0">
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem>
+                            <Edit className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                          <DropdownMenuItem className="text-red-600">
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={7} className="text-center py-12">
+                    <div className="flex flex-col items-center space-y-4">
+                      <div className="mx-auto h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Users className="h-8 w-8 text-gray-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-medium text-gray-900">
+                          {searchTerm || selectedRole !== "ALL" ? "No users found" : "No users yet"}
+                        </h3>
+                        <p className="mt-2 text-sm text-gray-500">
+                          {searchTerm || selectedRole !== "ALL"
+                            ? "Try adjusting your search criteria or filters."
+                            : "Get started by adding your first user to the system."}
+                        </p>
+                        {!searchTerm && selectedRole === "ALL" && (
+                          <Button className="mt-4" onClick={() => setIsAddUserOpen(true)}>
+                            <Plus className="mr-2 h-4 w-4" />
+                            Add First User
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </TableCell>
-                  <TableCell>
-                    <Badge className={getRoleBadgeColor(user.role)}>{user.role}</Badge>
-                  </TableCell>
-                  <TableCell>{user.department}</TableCell>
-                  <TableCell className="font-mono text-sm">{user.employeeId || user.studentId}</TableCell>
-                  <TableCell>
-                    <Badge variant={user.isActive ? "default" : "secondary"}>
-                      {user.isActive ? "Active" : "Inactive"}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>{user.lastLogin ? new Date(user.lastLogin).toLocaleDateString() : "Never"}</TableCell>
-                  <TableCell className="text-right">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
-                          <Edit className="mr-2 h-4 w-4" />
-                          Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-600">
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Delete
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
                 </TableRow>
-              ))}
+              )}
             </TableBody>
           </Table>
         </CardContent>

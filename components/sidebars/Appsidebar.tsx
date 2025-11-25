@@ -51,7 +51,7 @@ const AppSidebar = ({ role }: SidebarProps) => {
           // { label: 'Take Assessments', icon: <FileCheck2 className="h-5 w-5" />, href: '/student/assessments' },
           { label: 'View Results', icon: <GraduationCap className="h-5 w-5" />, href: '/student/results' },
           // { label: 'Plagiarism Reports', icon: <MonitorCheck className="h-5 w-5" />, href: '/student/plagiarism' },
-          { label: 'Feedback & Support', icon: <MessageSquare className="h-5 w-5" />, href: '/student/support' },
+          // { label: 'Feedback & Support', icon: <MessageSquare className="h-5 w-5" />, href: '/student/support' },
         ];
       default:
         return [];
@@ -61,7 +61,7 @@ const AppSidebar = ({ role }: SidebarProps) => {
   const items = getMenuItems(role);
 
   return (
-    <Sidebar className="border-r border-gray-200/80 bg-white shadow-sm" collapsible={'offcanvas'}>
+    <Sidebar className="border-r border-gray-200/80 shadow-md shadow-black/45">
       <SidebarHeader className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 border-b border-gray-200/60">
         <div className="py-6 flex items-center justify-start gap-4 text-2xl px-6">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 shadow-lg">
@@ -71,7 +71,7 @@ const AppSidebar = ({ role }: SidebarProps) => {
             <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
               EduBridge
             </h1>
-            <p className="text-xs text-gray-600 font-medium">Learning Management</p>
+            {/* <p className="text-xs text-gray-600 font-medium">Learning Management</p> */}
           </div>
         </div>
       </SidebarHeader>
@@ -93,7 +93,6 @@ const AppSidebar = ({ role }: SidebarProps) => {
                       className={cn(
                         'w-full h-12 flex items-center justify-start gap-4 px-4 rounded-xl font-medium text-sm transition-all duration-300 ease-out relative overflow-hidden',
                         'hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:shadow-md hover:scale-[1.02] hover:border-blue-200/50 border border-transparent',
-                        'group-hover:translate-x-1 transform',
                         pathname === item.href 
                           ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25 border-blue-500/20' 
                           : 'text-gray-700 hover:text-gray-900'
@@ -120,8 +119,8 @@ const AppSidebar = ({ role }: SidebarProps) => {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-gray-200/60 bg-gradient-to-r from-gray-50 to-slate-50 p-4">
-        <div className="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm border border-gray-200/60 hover:shadow-md transition-all duration-300">
+      <SidebarFooter className="border-t border-gray-200/60">
+        <div className="flex items-center justify-between bg-white rounded-xl p-3 shadow-sm border border-gray-200/60 hover:shadow-md transition-all duration-300">
           <div className="flex items-center justify-start gap-3">
             <Avatar className="h-10 w-10 ring-2 ring-blue-100 ring-offset-2">
               <AvatarImage src={'/wind.png'} className="object-cover" />
